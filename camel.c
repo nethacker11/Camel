@@ -119,6 +119,8 @@ int main() {
     destRect.w = 100;
     destRect.h = 100;
 
+    SDL_SetRenderDrawColor(renderer, 0xFF, 0x00, 0x00, 0xFF);
+    SDL_Rect testSpike = { 200, 200, 1, 30 };
 
     int up = 0; int down = 0; int left = 0; int right = 0;
     int quit = 0;
@@ -188,11 +190,15 @@ int main() {
 
 
         //Clear screen
+        SDL_SetRenderDrawColor( renderer, 0xFF, 0xFF, 0xFF, 0xFF );
         SDL_RenderClear( renderer );
 
         //Render texture to screen
         SDL_RenderCopy( renderer, currentTex, NULL, &camelRect );
         SDL_RenderCopy( renderer, penguin, NULL, &destRect );
+
+        //SDL_RenderFillRect(renderer, &testSpike);
+        SDL_RenderDrawRect(renderer, &testSpike);
 
         //Update screen
         SDL_RenderPresent( renderer );
